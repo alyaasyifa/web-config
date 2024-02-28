@@ -19,8 +19,8 @@ $(function () {
   }
 
   // Variable declaration for table
-  var dt_product_table = $('.datatables-products'),
-    productAdd = 'add-product',
+  var dt_product_table = $('.datatables-public'),
+    productAdd = 'add-public',
     statusObj = {
       1: { title: 'Scheduled', class: 'bg-label-warning' },
       2: { title: 'Publish', class: 'bg-label-success' },
@@ -417,10 +417,10 @@ $(function () {
           ]
         },
         {
-          text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">Add Product</span>',
+          text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">Add Public key</span>',
           className: 'add-new btn btn-primary ms-2 ms-sm-0',
           action: function () {
-            window.location.href = 'add-product';
+            window.location.href = 'add-public';
           }
         }
       ],
@@ -531,7 +531,7 @@ $(function () {
   }
 
   // Delete Record
-  $('.datatables-products tbody').on('click', '.delete-record', function () {
+  $('.datatables-public tbody').on('click', '.delete-record', function () {
     dt_products.row($(this).parents('tr')).remove().draw();
   });
 

@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "product_name": "iPhone 14 Pro",
+      "category": 2,
+      "stock": 1,
+      "sku": 19472,
+      "price": "$999",
+      "qty": 665,
+      "status": 3,
+      "image": "product-1.png",
+      "product_brand": "Super Retina XDR display footnote Pro Motion technology"
+    },
+    {
+      "id": 2,
+      "product_name": "Echo Dot (4th Gen)",
+      "category": 2,
+      "stock": 0,
+      "sku": 72836,
+      "price": "$25.50",
+      "qty": 827,
+      "status": 2,
+      "image": "product-2.png",
+      "product_brand": "Echo Dot Smart speaker with Alexa"
+    }
+  ]
+}
