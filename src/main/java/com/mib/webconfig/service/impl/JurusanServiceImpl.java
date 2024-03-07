@@ -26,7 +26,7 @@ public class JurusanServiceImpl implements JurusanService {
     @Override
     public Jurusan create(Jurusan jurusan) {
         jurusanRepository.save(jurusan);
-        return null;
+        return jurusan;
     }
 
     @Override
