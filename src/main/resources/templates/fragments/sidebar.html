@@ -3,6 +3,7 @@
 <html
   lang="en"
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:th="http://www/thymeleaf.org"
   class="light-style layout-navbar-fixed layout-menu-fixed layout-compact"
   dir="ltr"
   data-theme="theme-default"
@@ -175,6 +176,26 @@
                 <li class="menu-item">
                   <a href="public/add-public" class="menu-link">
                     <div data-i18n="Add Public key">Add Public key</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- jurusan menu start -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-components"></i>
+                <div data-i18n="Jurusan">Jurusan</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a th:href="@{/jurusan/list}" class="menu-link">
+                    <div data-i18n="Jurusan List">Jurusan List</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a th:href="@{/jurusan/create}" class="menu-link">
+                    <div data-i18n="Add Jurusan">Add Jurusan</div>
                   </a>
                 </li>
               </ul>
