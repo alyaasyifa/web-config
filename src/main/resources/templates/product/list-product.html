@@ -5,6 +5,13 @@
         xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
         xmlns:th="http://www/thymeleaf.org"
         layout:decorate="~{fragments/sidebar}">
+<head>
+  <style>
+    .action-pagination-wrapper {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
 <body>
         <div layout:fragment="content">
           <div class="content-wrapper">
@@ -34,7 +41,7 @@
                     </div>
                     <div class="col-md-4"></div>
                     <div class="col-md-3">
-                      <a href="add-product">
+                      <a th:href="@{/product/add-product}">
                         <button type="submit" class="btn btn-primary">
                           + Add Product
                         </button></a
@@ -48,10 +55,10 @@
                     <tr>
                       <th></th>
                       <th></th>
+                      <th>agregator name</th>
                       <th>product code</th>
-                      <th></th>
-                      <th></th>
-                      <th></th>
+                      <th>product name</th>
+                      <th>fee</th>
                       <th>actions</th>
                     </tr>
                     </thead>
@@ -59,9 +66,12 @@
                     <tr>
                       <th></th>
                       <th scope="row">1</th>
-                      <td colspan="4">Mark</td>
+                      <td>Mark</td>
+                      <td>A1001</td>
+                      <td>Nike</td>
+                      <td>100.000</td>
                       <td>
-                        <a href="edit-product"
+                        <a th:href="@{/product/edit-product}"
                         ><button type="button" class="btn btn-primary">
                           Edit
                         </button></a
@@ -79,9 +89,12 @@
                     <tr>
                       <th></th>
                       <th scope="row">2</th>
-                      <td colspan="4">Jacob</td>
+                      <td>Mark</td>
+                      <td>A1001</td>
+                      <td>Nike</td>
+                      <td>100.000</td>
                       <td>
-                        <a href="edit-product"
+                        <a th:href="@{/product/edit-product}"
                         ><button type="button" class="btn btn-primary">
                           Edit
                         </button></a
@@ -99,9 +112,12 @@
                     <tr>
                       <th></th>
                       <th scope="row">3</th>
-                      <td colspan="4">Larry the Bird</td>
+                      <td>Mark</td>
+                      <td>A1001</td>
+                      <td>Nike</td>
+                      <td>100.000</td>
                       <td>
-                        <a href="edit-product"
+                        <a th:href="@{/product/edit-product}"
                         ><button type="button" class="btn btn-primary">
                           Edit
                         </button></a
@@ -169,6 +185,24 @@
                     </script>
                     </tbody>
                   </table>
+                  <div class="action-pagination-wrapper"></div>
+
+                  <nav aria-label="..." style=" margin-right: 35px;">
+                    <ul class="pagination justify-content-end">
+                      <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                      </li>
+                      <li class="page-item"><a class="page-link" href="#">1</a></li>
+                      <li class="page-item active" aria-current="page">
+                        <a class="page-link" href="#">2</a>
+                      </li>
+                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                      <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
                 </div>
               </div>
             </div>
