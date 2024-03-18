@@ -23,12 +23,38 @@ public class ReportController {
     @Autowired
     private ReportService reportService;
 
+//    @RequestMapping(value = "/reporting/product-code", method = RequestMethod.GET)
+//    public ModelAndView showProductReportForm(){
+//        ModelAndView modelAndView = new ModelAndView();
+//
+//        modelAndView.setViewName("reporting/product-code");
+//        return modelAndView;
+//    }
+
     @RequestMapping(value = "/reporting/product-code", method = RequestMethod.GET)
     public ModelAndView showProductReportForm(){
         ModelAndView modelAndView = new ModelAndView();
 
+        List<String> exportType = new ArrayList<>();
+        exportType.add("CSV");
+        exportType.add("DOCX");
+        exportType.add("EXCEL");
+        exportType.add("PDF");
+        modelAndView.addObject("exportType", exportType);
         modelAndView.setViewName("reporting/product-code");
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/reporting/product/download", method = { RequestMethod.GET, RequestMethod.POST})
+    public ResponseEntity<Object> createProductReport(@RequestParam(value = "exportType", required = false) String exporType,
+                                                      HttpServletResponse response){
+        try {
+            reportService.createProductReport(exporType,response);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }catch (Exception e){
+            log.info(e.getMessage());
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
     }
 
     @RequestMapping(value = "/reporting/public-key", method = RequestMethod.GET)
@@ -54,7 +80,7 @@ public class ReportController {
     }
 
     @RequestMapping(value="/reporting/guru/download", method = { RequestMethod.GET, RequestMethod.POST })
-    public ResponseEntity<Object> createProductReport(@RequestParam(value = "exportType",required = false) String exportType,
+    public ResponseEntity<Object> createGuruReport(@RequestParam(value = "exportType",required = false) String exportType,
                                                       HttpServletResponse response) {
         try {
             reportService.createGuruReport(exportType,response);

@@ -1,10 +1,8 @@
 package com.mib.webconfig.controller;
 
 import com.mib.webconfig.entity.Jurusan;
-//import com.mib.webconfig.entity.MasterProductCodeEnitity;
 import com.mib.webconfig.service.JurusanService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
