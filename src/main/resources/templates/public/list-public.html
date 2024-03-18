@@ -53,81 +53,25 @@
                   <table class="table">
                     <thead class="border-top">
                     <tr>
-                      <th></th>
-                      <th></th>
                       <th>public key</th>
-                      <th></th>
                       <th>name</th>
-                      <th></th>
-                      <th></th>
-                      <th></th>
                       <th>actions</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                      <th></th>
-                      <th scope="row">1</th>
-                      <td colspan="2">A1001</td>
-                      <td colspan="4">Mark</td>
+                    <tbody>
+                    <tr th:each="publickey : ${publicKeyList}">
+                      <td th:text="${publickey.publickey}"></td>
+                      <td th:text="${publickey.name}"></td>
                       <td>
-                        <a th:href="@{/public/edit-public}"
-                        ><button type="button" class="btn btn-primary">
-                          Edit
-                        </button></a
-                        >
-                        <button
-                                type="button"
-                                class="btn btn-danger"
-                                data-bs-toggle="modal"
-                                data-bs-target="#confirmDeleteModal"
-                        >
-                          Delete
-                        </button>
+                        <div>
+                          <a th:href="@{'/public/edit/' + ${publickey.name}}"><button type="button" class="btn btn-primary">Edit</button></a>
+                          <a th:href="@{'/public/delete/' + ${publickey.name}}"><button type="button" class="btn btn-danger">Delete</button></a>
+                        </div>
                       </td>
                     </tr>
-                    <tr>
-                      <th></th>
-                      <th scope="row">2</th>
-                      <td colspan="2">A1001</td>
-                      <td colspan="4">Mark</td>
-                      <td>
-                        <a th:href="@{/public/edit-public}"
-                        ><button type="button" class="btn btn-primary">
-                          Edit
-                        </button></a
-                        >
-                        <button
-                                type="button"
-                                class="btn btn-danger"
-                                data-bs-toggle="modal"
-                                data-bs-target="#confirmDeleteModal"
-                        >
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th></th>
-                      <th scope="row">3</th>
-                      <td colspan="2">A1001</td>
-                      <td colspan="4">Mark</td>
-                      <td>
-                        <a th:href="@{/public/edit-public}"
-                        ><button type="button" class="btn btn-primary">
-                          Edit
-                        </button></a
-                        >
-                        <button
-                                type="button"
-                                class="btn btn-danger"
-                                data-bs-toggle="modal"
-                                data-bs-target="#confirmDeleteModal"
-                        >
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
+
+
                     <div
                             class="modal fade"
                             id="confirmDeleteModal"
