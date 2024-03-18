@@ -17,7 +17,7 @@
         <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="py-3 mb-0">
             <span class="text-muted fw-light">Reporting /</span
-            ><span class="fw-medium"> Guru</span>
+            ><span class="fw-medium"> Movie</span>
             </h4>
 
             <div class="app-ecommerce">
@@ -36,27 +36,17 @@
                                 <small class="text-muted float-end">Default label</small>
                             </div>
                             <div class="card-body">
-                                <form id="formAuthentication" method="post" role="form" th:action="@{/reporting/guru/download}" th:object="${exportType}" class="form-horizontal">
+                                <form id="formAuthentication" method="post" role="form" th:action="@{/reporting/movie/download}" th:object="${exportType}" class="form-horizontal">
                                     <div class="row mb-3">
                                         <label
                                                 class="col-sm-2 col-form-label"
                                                 for="exportType"
-                                        >Guru</label
+                                        >movie</label
                                         >
                                         <div class="col-sm-10">
-                                            <select
-                                                    id="exportType"
-                                                    name="exportType"
-                                                    class="select2 form-select"
-                                                    data-allow-clear="true"
-                                            >
-                                                <option value="">Select</option>
-<!--                                                <option value="pdf">PDF</option>-->
-<!--                                                <option value="excel">Excel</option>-->
-<!--                                                <option value="docx">Docx</option>-->
-<!--                                                <option value="csv">CSV</option>-->
+                                            <select id="exportType" name="exportType" class="select2 form-select" data-allow-clear="true">
 
-
+                                            <option value="">Select</option>
                                                 <option th:each="type: ${exportType}" th:value="${type}" th:text="${type}"></option>
                                             </select>
                                         </div>
