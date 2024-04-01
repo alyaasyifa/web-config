@@ -24,14 +24,6 @@ public class ReportController {
     @Autowired
     private ReportService reportService;
 
-//    @RequestMapping(value = "/reporting/product-code", method = RequestMethod.GET)
-//    public ModelAndView showProductReportForm(){
-//        ModelAndView modelAndView = new ModelAndView();
-//
-//        modelAndView.setViewName("reporting/product-code");
-//        return modelAndView;
-//    }
-
     @RequestMapping(value = "/reporting/product-code", method = RequestMethod.GET)
     public ModelAndView showProductReportForm(){
         ModelAndView modelAndView = new ModelAndView();
