@@ -50,14 +50,6 @@ public class ReportController {
         }
     }
 
-    @RequestMapping(value = "/reporting/public-key", method = RequestMethod.GET)
-    public ModelAndView showProductReportFormKey(){
-        ModelAndView modelAndView = new ModelAndView();
-
-        modelAndView.setViewName("reporting/public-key");
-        return modelAndView;
-    }
-
     @RequestMapping(value = "/reporting/guru", method = RequestMethod.GET)
     public ModelAndView showGuruReportForm(){
         ModelAndView modelAndView = new ModelAndView();
@@ -109,4 +101,31 @@ public class ReportController {
         }
 
     }
+
+    @RequestMapping(value = "/reporting/publicKey", method = RequestMethod.GET)
+    public ModelAndView showPublicKeyReportForm(){
+        ModelAndView modelAndView = new ModelAndView();
+
+        List<String> exportType = new ArrayList<>();
+        exportType.add("CSV");
+        exportType.add("DOCX");
+        exportType.add("EXCEL");
+        exportType.add("PDF");
+        modelAndView.addObject("exportType", exportType);
+        modelAndView.setViewName("reporting/publicKey");
+        return modelAndView;
     }
+
+    @RequestMapping(value="/reporting/publicKey/download", method = { RequestMethod.GET, RequestMethod.POST })
+    public ResponseEntity<Object> createPublicKeyReport(@RequestParam(value = "exportType",required = false) String exportType,
+                                                    HttpServletResponse response) {
+        try {
+            reportService.createPublicKeyReport(exportType, response);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            log.info(e.getMessage());
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+    }
+}

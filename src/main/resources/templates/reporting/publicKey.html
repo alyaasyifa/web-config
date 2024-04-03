@@ -36,22 +36,18 @@
                                 <small class="text-muted float-end">Default label</small>
                             </div>
                             <div class="card-body">
-                                <form id="formAuthentication">
+                                <form id="formAuthentication" method="post" role="form" th:action="@{/reporting/publicKey/download}" th:object="${exportType}" class="form-horizontal">
                                     <div class="row mb-3">
                                         <label
                                                 class="col-sm-2 col-form-label"
-                                                for="public-key"
-                                        >Public key</label
+                                                for="exportType"
+                                        >movie</label
                                         >
                                         <div class="col-sm-10">
-                                            <select
-                                                    id="public-key"
-                                                    class="select2 form-select"
-                                                    data-allow-clear="true"
-                                            >
+                                            <select id="exportType" name="exportType" class="select2 form-select" data-allow-clear="true">
+
                                                 <option value="">Select</option>
-                                                <option value="pdf">PDF</option>
-                                                <option value="excel">Excel</option>
+                                                <option th:each="type: ${exportType}" th:value="${type}" th:text="${type}"></option>
                                             </select>
                                         </div>
                                     </div>
