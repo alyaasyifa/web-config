@@ -128,4 +128,31 @@ public class ReportController {
         }
 
     }
+
+    @RequestMapping(value = "/reporting/siswa", method = RequestMethod.GET)
+    public ModelAndView showSiswaReportForm(){
+        ModelAndView modelAndView = new ModelAndView();
+
+        List<String> exportType = new ArrayList<>();
+        exportType.add("CSV");
+        exportType.add("DOCX");
+        exportType.add("EXCEL");
+        exportType.add("PDF");
+        modelAndView.addObject("exportType", exportType);
+        modelAndView.setViewName("reporting/siswa");
+        return modelAndView;
+    }
+
+    @RequestMapping(value="/reporting/siswa/download", method = { RequestMethod.GET, RequestMethod.POST })
+    public ResponseEntity<Object> createSiswaReport(@RequestParam(value = "exportType",required = false) String exportType,
+                                                        HttpServletResponse response) {
+        try {
+            reportService.createSiswaReport(exportType, response);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            log.info(e.getMessage());
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+    }
 }
