@@ -128,4 +128,33 @@ public class ReportController {
         }
 
     }
+
+
+//    report jurusan
+@RequestMapping(value = "/reporting/jurusan", method = RequestMethod.GET)
+public ModelAndView showJurusanReportForm(){
+    ModelAndView modelAndView = new ModelAndView();
+
+    List<String> exportType = new ArrayList<>();
+    exportType.add("CSV");
+    exportType.add("DOCX");
+    exportType.add("EXCEL");
+    exportType.add("PDF");
+    modelAndView.addObject("exportType", exportType);
+    modelAndView.setViewName("reporting/jurusan");
+    return modelAndView;
+}
+
+    @RequestMapping(value="/reporting/jurusan/download", method = { RequestMethod.GET, RequestMethod.POST })
+    public ResponseEntity<Object> createJurusanReport(@RequestParam(value = "exportType",required = false) String exportType,
+                                                        HttpServletResponse response) {
+        try {
+            reportService.createJurusanReport(exportType, response);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            log.info(e.getMessage());
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+    }
 }
