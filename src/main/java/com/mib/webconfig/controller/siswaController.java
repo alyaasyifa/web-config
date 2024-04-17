@@ -1,9 +1,6 @@
 package com.mib.webconfig.controller;
 
-import com.mib.webconfig.entity.Jurusan;
-import com.mib.webconfig.entity.Siswa;
-import com.mib.webconfig.service.JurusanService;
-import com.mib.webconfig.service.SiswaService;
+import com.mib.webconfig.entity.siswa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,15 +9,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Map;
 
 @Controller
-public class SiswaController {
+public class siswaController {
 
     @Autowired
-    private SiswaService siswaService;
+    private com.mib.webconfig.service.siswaService siswaService;
 
     @RequestMapping(value = "/siswa/create", method = RequestMethod.GET)
     public String showCreateForm(){
@@ -30,7 +26,7 @@ public class SiswaController {
     @RequestMapping(value = "/siswa/create", method = RequestMethod.POST)
     public ModelAndView create(@RequestParam Map<String,String> data) {
         ModelAndView modelAndView = new ModelAndView();
-        Siswa siswa = new Siswa();
+        siswa siswa = new siswa();
         siswa.setNis(data.get("nis"));
         siswa.setNamaSiswa(data.get("namaSiswa"));
         siswaService.create(siswa);
@@ -43,7 +39,7 @@ public class SiswaController {
     @RequestMapping(value = "/siswa/list", method = RequestMethod.GET)
     public ModelAndView siswaList(){
         ModelAndView modelAndView = new ModelAndView();
-        List<Siswa> siswaList = siswaService.showAll();
+        List<siswa> siswaList = siswaService.showAll();
         modelAndView.addObject("siswaList", siswaList);
 
         modelAndView.setViewName("siswa/list-siswa");
@@ -53,7 +49,7 @@ public class SiswaController {
     @RequestMapping(value="/siswa/edit/{nis}", method = RequestMethod.GET)
     public ModelAndView showEditForm(@PathVariable("nis") String nis){
         ModelAndView modelAndView = new ModelAndView();
-        Siswa siswa = siswaService.findByNis(nis);
+        siswa siswa = siswaService.findByNis(nis);
         modelAndView.addObject("siswa", siswa);
         modelAndView.setViewName("siswa/edit-siswa");
         return modelAndView;
@@ -62,7 +58,7 @@ public class SiswaController {
     @RequestMapping(value = "/siswa/edit/{nis}", method = RequestMethod.POST)
     public ModelAndView update(@PathVariable("nis") String nis, @RequestParam Map<String,String> data){
         ModelAndView modelAndView = new ModelAndView();
-        Siswa siswa = new Siswa();
+        siswa siswa = new siswa();
         siswa.setNis(nis);
         siswa.setNamaSiswa(data.get("namaSiswa"));
         siswaService.update(nis,siswa);

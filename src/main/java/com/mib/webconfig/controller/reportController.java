@@ -1,7 +1,6 @@
 package com.mib.webconfig.controller;
 
 
-import com.mib.webconfig.service.ReportService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,11 +17,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class ReportController {
+public class reportController {
 
-    private static final Logger log = LoggerFactory.getLogger(ReportController.class);
+    private static final Logger log = LoggerFactory.getLogger(reportController.class);
     @Autowired
-    private ReportService reportService;
+    private com.mib.webconfig.service.reportService reportService;
 
     @RequestMapping(value = "/reporting/product-code", method = RequestMethod.GET)
     public ModelAndView showProductReportForm(){
@@ -139,7 +138,7 @@ public class ReportController {
         exportType.add("EXCEL");
         exportType.add("PDF");
         modelAndView.addObject("exportType", exportType);
-        modelAndView.setViewName("reporting/siswa");
+        modelAndView.setViewName("Siswa");
         return modelAndView;
     }
 
