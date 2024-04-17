@@ -29,7 +29,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @Service
-public class ReportService {
+public class reportService {
 
 
     @Autowired
@@ -42,7 +42,7 @@ public class ReportService {
     private ProductRepository productRepository;
 
     @Autowired
-    private SiswaRepository siswaRepository;
+    private com.mib.webconfig.repository.siswaRepository siswaRepository;
 
 
     @Autowired
@@ -329,7 +329,7 @@ public class ReportService {
     }
 
     public void createSiswaReport(String exportType, HttpServletResponse response) throws JRException, IOException {
-        List<Siswa> siswaList = siswaRepository.findAll();
+        List<siswa> siswaList = siswaRepository.findAll();
         exportSiswaReport(siswaList, exportType, response);
     }
 

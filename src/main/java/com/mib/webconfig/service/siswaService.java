@@ -1,15 +1,15 @@
 package com.mib.webconfig.service;
 
-import com.mib.webconfig.entity.Siswa;
+import com.mib.webconfig.entity.siswa;
 
 import java.util.List;
 
-public interface SiswaService {
+public interface siswaService {
 
-    List<Siswa> showAll();
-    Siswa create(Siswa siswa);
-    Siswa update(String nis, Siswa siswa);
+    List<siswa> showAll();
+    siswa create(siswa siswa);
+    siswa update(String nis, siswa siswa);
     void delete (String nis);
 
-    Siswa findByNis(String nis);
+    siswa findByNis(String nis);
 }

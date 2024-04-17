@@ -1,9 +1,9 @@
 package com.mib.webconfig.repository;
 
-import com.mib.webconfig.entity.Siswa;
+import com.mib.webconfig.entity.siswa;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface SiswaRepository extends JpaRepository<Siswa,Long> {
+public interface siswaRepository extends JpaRepository<siswa,Long> {
 
-    Siswa findByNis(String nis);
+    siswa findByNis(String nis);
 }
