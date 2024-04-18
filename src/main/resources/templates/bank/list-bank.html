@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html
+        lang="en"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        xmlns:th="http://www/thymeleaf.org"
+        layout:decorate="~{fragments/sidebar}">
+<body>
+<div layout:fragment="content">
+    <div class="content-wrapper">
+        <!-- Content -->
+
+        <div class="container-xxl flex-grow-1 container-p-y">
+            <h4 class="py-3 mb-4">
+                <span class="text-muted fw-light">Bank /</span> Bank List
+            </h4>
+
+            <!-- Product List Widget -->
+
+            <!-- Product List Table -->
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Filter</h5>
+                    <div
+                            class="d-flex justify-content-between align-items-center row py-3 gap-3 gap-md-0"
+                    >
+                        <div class="col-md-3">
+                            <input
+                                    type="text"
+                                    class="form-control"
+                                    id="basic-default-name"
+                                    placeholder="Search"
+                            />
+                        </div>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-3">
+                            <a th:href="@{/bank/create}">
+                                <button type="submit" class="btn btn-primary">
+                                    + Add Bank
+                                </button></a
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="card-datatable table-responsive">
+                    <table class="table">
+                        <thead class="border-top">
+                        <tr>
+                            <th>Bank Code</th>
+                            <th>Bank Name</th>
+                            <th>Bin</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="bank : ${bankList}">
+                            <td th:text="${bank.bankCode}"></td>
+                            <td th:text="${bank.bankName}"></td>
+                            <td th:text="${bank.bin}"></td>
+                            <td>
+                                <div>
+                                    <a th:href="@{'/bank/edit/' + ${bank.bankCode}}"><button type="button" class="btn btn-primary">Edit</button></a>
+                                    <a th:href="@{'/bank/delete/' + ${bank.bankCode}}"><button type="button" class="btn btn-danger">Delete</button></a>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <script>
+                            function deleteItem() {
+                                // Add your delete logic here
+                                console.log("Item deleted"); // You can replace this with your actual delete logic
+                                // Close the modal after deletion
+                                $("#confirmDeleteModal").modal("hide");
+                            }
+                        </script>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div
+                    class="modal fade"
+                    id="confirmDeleteModal"
+                    tabindex="-1"
+                    aria-labelledby="confirmDeleteModalLabel"
+                    aria-hidden="true"
+            >
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="confirmDeleteModalLabel">
+                                Yakin Hapus
+                            </h5>
+                            <button
+                                    type="button"
+                                    class="btn-close"
+                                    data-bs-dismiss="modal"
+                                    aria-label="Close"
+                            ></button>
+                        </div>
+                        <div class="modal-body">
+                            Anda yakin ingin menghapus data ini?
+                        </div>
+                        <div class="modal-footer">
+                            <button
+                                    type="button"
+                                    class="btn btn-secondary"
+                                    data-bs-dismiss="modal"
+                            >
+                                Batal
+                            </button>
+                            <button
+                                    type="button"
+                                    class="btn btn-danger"
+                                    onclick="deleteItem()"
+                            >
+                                Hapus
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- / Content -->
+
+        <!-- Footer -->
+
+        <div class="content-backdrop fade"></div>
+    </div>
+
+</div>
+</body>
+</html>
