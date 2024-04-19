@@ -1,6 +1,5 @@
 package com.mib.webconfig.service;
 
-import com.mib.webconfig.entity.PublicKey;
 import com.mib.webconfig.entity.VirtualAccount;
 
 import java.util.List;
@@ -11,8 +10,9 @@ public interface VirtualAccountService {
     VirtualAccount update(String name, VirtualAccount virtualAccountEntity);
     void delete (String name);
 
-    VirtualAccount findByVirtual(String name);
-
     VirtualAccount findByName(String name);
+
+//    VirtualAccount findByVirtual(String name);
+    
 
 }

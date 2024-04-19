@@ -1,5 +1,7 @@
 package com.mib.webconfig.service.impl;
 
+import com.mib.webconfig.entity.Bank;
+import com.mib.webconfig.entity.Multibiller;
 import com.mib.webconfig.entity.VirtualAccount;
 import com.mib.webconfig.repository.VirtualAccountRepository;
 import com.mib.webconfig.service.VirtualAccountService;
@@ -32,35 +34,28 @@ public class VirtualAccountServiceImpl implements VirtualAccountService {
 
 
     @Override
-    public VirtualAccount update(String name, VirtualAccount virtualAccountEntity) {
+    public VirtualAccount update(String name, VirtualAccount virtualAccount) {
         VirtualAccount savedVirtualAccount = virtualAccountRepository.findByName(name);
-        if (savedVirtualAccount != null) {
-            savedVirtualAccount.setFee_account(virtualAccountEntity.getFee_account());
-            virtualAccountRepository.save(savedVirtualAccount);
-        } else {
-            log.error("Public with name {} not found.", name);
-        }
+        savedVirtualAccount.setPrefix(virtualAccount.getPrefix());
+        savedVirtualAccount.setFeeAccount(virtualAccount.getFeeAccount());
+        savedVirtualAccount.setDestinationAccount(virtualAccount.getDestinationAccount());
+        savedVirtualAccount.setFee(virtualAccount.getFee());
+        virtualAccountRepository.save(savedVirtualAccount);
         return savedVirtualAccount;
     }
 
-    @Override
-    public void delete(String name) {
-        VirtualAccount virtualAccountEntity = virtualAccountRepository.findByName(name);
-        if (virtualAccountEntity != null) {
-            virtualAccountRepository.delete(virtualAccountEntity);
-        } else {
-            log.error("Public with name {} not found.", name);
-        }
-    }
 
     @Override
-    public VirtualAccount findByVirtual(String name) {
-        return null;
+    public void delete(String name) {
+        VirtualAccount virtualAccount = virtualAccountRepository.findByName(name);
+        virtualAccountRepository.deleteById(virtualAccount.getId());
     }
+
 
     @Override
     public VirtualAccount findByName(String name) {
-        return virtualAccountRepository.findByName(name);
+        VirtualAccount virtualAccount = virtualAccountRepository.findByName(name);
+        return virtualAccount;
     }
 
 

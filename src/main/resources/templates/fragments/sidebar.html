@@ -168,6 +168,47 @@
               </ul>
             </li>
 
+
+
+            <!-- Virtual Acoount menu start -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-color-swatch"></i>
+                <div data-i18n="Virtual Account">Virtual Account</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a th:href="@{/virtualaccount/list}" class="menu-link">
+                    <div data-i18n="VA List">VA List</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a th:href="@{/virtualaccount/create}" class="menu-link">
+                    <div data-i18n="Add VA">Add VA</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-building-bank"></i>
+                <div data-i18n="Multibiller">Multibiller</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a th:href="@{/multibiller/list}" class="menu-link">
+                    <div data-i18n="Multibiller List">Multibiler List</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a th:href="@{/multibiller/create}" class="menu-link">
+                    <div data-i18n="Add Multibiller">Add Multibiller</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
             <!-- product menu start -->
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -282,25 +323,6 @@
                 <li class="menu-item">
                   <a th:href="@{/movie/create}" class="menu-link">
                     <div data-i18n="Add Movie">Add Movie</div>
-                  </a>
-                </li>
-              </ul>
-            </li>
-
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons ti ti-building-bank"></i>
-                <div data-i18n="Multibiller">Multibiller</div>
-              </a>
-              <ul class="menu-sub">
-                <li class="menu-item">
-                  <a th:href="@{/multibiller/list}" class="menu-link">
-                    <div data-i18n="Multibiller List">Multibiler List</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a th:href="@{/multibiller/create}" class="menu-link">
-                    <div data-i18n="Add Multibiller">Add Multibiller</div>
                   </a>
                 </li>
               </ul>

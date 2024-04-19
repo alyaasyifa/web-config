@@ -32,10 +32,10 @@ public class VirtualAccount {
     private String fee;
 
     @Column(name = "destination_account", nullable = false)
-    private String destination_account;
+    private String destinationAccount;
 
     @Column(name = "fee_account", nullable = false)
-    private String fee_account;
+    private String feeAccount;
 
     @CreatedBy
     private String createdby;
@@ -49,7 +49,5 @@ public class VirtualAccount {
     @LastModifiedDate
     private String lastmodifieddate;
 
-    public void setVirtualAccount(String virtualaccount) {
-    }
 }
 
