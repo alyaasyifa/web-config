@@ -1,153 +1,98 @@
 <!DOCTYPE html>
-
-<html
-        lang="en"
-        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-        xmlns:th="http://www/thymeleaf.org"
-        layout:decorate="~{fragments/sidebar}">
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www/thymeleaf.org"
+      layout:decorate="~{fragments/sidebar}">
 <head>
   <style>
     .action-pagination-wrapper {
       margin-bottom: 20px;
     }
   </style>
+</head>
 <body>
-        <div layout:fragment="content">
-          <!-- Content wrapper -->
-          <div class="content-wrapper">
-            <!-- Content -->
+<div layout:fragment="content">
+  <!-- Content wrapper -->
+  <div class="content-wrapper">
+    <!-- Content -->
 
-            <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="py-3 mb-4">
-                <span class="text-muted fw-light">Public key /</span> Public key List
-              </h4>
+    <div class="container-xxl flex-grow-1 container-p-y">
+      <h4 class="py-3 mb-4">
+        <span class="text-muted fw-light">Public key /</span> Public key List
+      </h4>
 
-              <!-- Product List Widget -->
+      <!-- Public Key List Table -->
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title mb-0">Filter</h5>
+          <div class="d-flex justify-content-between align-items-center row py-3 gap-3 gap-md-0">
+            <div class="col-md-3">
+              <input type="text" class="form-control" id="basic-default-name" placeholder="Search" />
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-3">
+              <a th:href="@{/public/add-public}">
+                <button type="submit" class="btn btn-primary">
+                  + Add Public key
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="card-datatable table-responsive">
+          <table class="table">
+            <thead class="border-top">
+            <tr>
+              <th>Public key</th>
+              <th>Name</th>
+              <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="publickey : ${publicKeyList}">
+              <td th:text="${publickey.publickey}"></td>
+              <td th:text="${publickey.name}"></td>
+              <td>
+                <div>
+                  <a th:href="@{'/public/edit/' + ${publickey.name}}"><button type="button" class="btn btn-primary">Edit</button></a>
+                  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-public-code="${publickey.name}">
+                    Delete
+                  </button>
 
-              <!-- Product List Table -->
-              <div class="card">
-                <div class="card-header">
-                  <h5 class="card-title mb-0">Filter</h5>
-                  <div
-                          class="d-flex justify-content-between align-items-center row py-3 gap-3 gap-md-0"
-                  >
-                    <div class="col-md-3">
-                      <input
-                              type="text"
-                              class="form-control"
-                              id="basic-default-name"
-                              placeholder="Search"
-                      />
-                    </div>
-                    <div class="col-md-4"></div>
-                    <div class="col-md-3">
-                      <a th:href="@{/public/add-public}">
-                        <button type="submit" class="btn btn-primary">
-                          + Add Public key
-                        </button></a
-                      >
-                    </div>
-                  </div>
-                </div>
-                <div class="card-datatable table-responsive">
-                  <table class="table">
-                    <thead class="border-top">
-                    <tr>
-                      <th>public key</th>
-                      <th>name</th>
-                      <th>actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tbody>
-                    <tr th:each="publickey : ${publicKeyList}">
-                      <td th:text="${publickey.publickey}"></td>
-                      <td th:text="${publickey.name}"></td>
-                      <td>
-                        <div>
-                          <a th:href="@{'/public/edit/' + ${publickey.name}}"><button type="button" class="btn btn-primary">Edit</button></a>
-                          <a th:href="@{'/public/delete/' + ${publickey.name}}"><button type="button" class="btn btn-danger">Delete</button></a>
+                  <!-- Modal -->
+                  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="deleteModalLabel">Yakin Hapus</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                      </td>
-                    </tr>
-
-
-                    <div
-                            class="modal fade"
-                            id="confirmDeleteModal"
-                            tabindex="-1"
-                            aria-labelledby="confirmDeleteModalLabel"
-                            aria-hidden="true"
-                    >
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="confirmDeleteModalLabel">
-                              Yakin Hapus
-                            </h5>
-                            <button
-                                    type="button"
-                                    class="btn-close"
-                                    data-bs-dismiss="modal"
-                                    aria-label="Close"
-                            ></button>
-                          </div>
-                          <div class="modal-body">
-                            Anda yakin ingin menghapus data ini?
-                          </div>
-                          <div class="modal-footer">
-                            <button
-                                    type="button"
-                                    class="btn btn-secondary"
-                                    data-bs-dismiss="modal"
-                            >
-                              Batal
-                            </button>
-                            <button
-                                    type="button"
-                                    class="btn btn-danger"
-                                    onclick="deleteItem()"
-                            >
-                              Hapus
-                            </button>
-                          </div>
+                        <div class="modal-body">
+                          Anda yakin ingin menghapus data ini?
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                          <a th:href="@{'/public/delete/' + ${publickey.name}}"><button type="button" class="btn btn-danger">Hapus</button></a>
                         </div>
                       </div>
                     </div>
-
-                    <script>
-                      function deleteItem() {
-                        // Add your delete logic here
-                        console.log("Item deleted"); // You can replace this with your actual delete logic
-                        // Close the modal after deletion
-                        $("#confirmDeleteModal").modal("hide");
-                      }
-                    </script>
-                    </tbody>
-                  </table>
-                  <div class="action-pagination-wrapper"></div>
-
-                  <nav aria-label="..." style=" margin-right: 45px;">
-                    <ul class="pagination justify-content-end">
-                      <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                      </li>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item active" aria-current="page">
-                        <a class="page-link" href="#">2</a>
-                      </li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                      </li>
-                    </ul>
-                  </nav>
+                  </div>
                 </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
+              </td>
+            </tr>
+            </tbody>
+          </table>
         </div>
+      </div>
+    </div>
+    <!-- / Content -->
+
+    <!-- Footer -->
+
+    <div class="content-backdrop fade"></div>
+  </div>
+
+</div>
 </body>
 </html>
+
