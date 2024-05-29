@@ -40,6 +40,9 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void delete(String productCode){
         Product product = productRepository.findByProductCode(productCode);
+        if (product == null) {
+            throw new IllegalArgumentException("Product not found for code: " + productCode);
+        }
         productRepository.deleteById(product.getId());
     }
 

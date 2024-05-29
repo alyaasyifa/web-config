@@ -35,7 +35,7 @@ public class MovieController {
         movieService.create(movie);
         String sccMsg = "Data saved successfully";
         modelAndView.addObject("sccMsg", sccMsg);
-        modelAndView.setViewName("movie/add-movie");
+        modelAndView.setViewName("redirect:/movie/list");
         return modelAndView;
     }
 

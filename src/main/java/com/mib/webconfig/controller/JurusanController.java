@@ -32,7 +32,7 @@ public class JurusanController {
         jurusanService.create(jurusan);
         String sccMsg = "Data saved successfully";
         modelAndView.addObject("sccMsg", sccMsg);
-        modelAndView.setViewName("jurusan/add-jurusan");
+        modelAndView.setViewName("redirect:/jurusan/list");
         return modelAndView;
     }
 

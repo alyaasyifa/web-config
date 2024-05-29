@@ -62,67 +62,35 @@
               <td>
                 <div>
                   <a th:href="@{'/product/edit/' + ${product.productCode}}"><button type="button" class="btn btn-primary">Edit</button></a>
-                  <a th:href="@{'/product/delete/' + ${product.productCode}}"><button type="button" class="btn btn-danger">Delete</button></a>
+                  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-product-code="${product.productCode}">
+                    Delete
+                  </button>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="deleteModalLabel">Yakin Hapus</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          Anda yakin ingin menghapus data ini?
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                          <a th:href="@{'/product/delete/' + ${product.productCode}}"><button type="button" class="btn btn-danger">Hapus</button></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </td>
             </tr>
-
-            <script>
-              function deleteItem() {
-                // Add your delete logic here
-                console.log("Item deleted"); // You can replace this with your actual delete logic
-                // Close the modal after deletion
-                $("#confirmDeleteModal").modal("hide");
-              }
-            </script>
             </tbody>
           </table>
         </div>
       </div>
-
-      <div
-              class="modal fade"
-              id="confirmDeleteModal"
-              tabindex="-1"
-              aria-labelledby="confirmDeleteModalLabel"
-              aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="confirmDeleteModalLabel">
-                Yakin Hapus
-              </h5>
-              <button
-                      type="button"
-                      class="btn-close"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              Anda yakin ingin menghapus data ini?
-            </div>
-            <div class="modal-footer">
-              <button
-                      type="button"
-                      class="btn btn-secondary"
-                      data-bs-dismiss="modal"
-              >
-                Batal
-              </button>
-              <button
-                      type="button"
-                      class="btn btn-danger"
-                      onclick="deleteItem()"
-              >
-                Hapus
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
     <!-- / Content -->
 

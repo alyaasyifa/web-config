@@ -36,7 +36,7 @@ public class MultibillerController {
         multibillerService.create(multibiller);
         String sccMsg = "Data saved successfully";
         modelAndView.addObject("sccMsg", sccMsg);
-        modelAndView.setViewName("multibiller/add-multibiller");
+        modelAndView.setViewName("redirect:/multibiller/list");
         return modelAndView;
     }
 

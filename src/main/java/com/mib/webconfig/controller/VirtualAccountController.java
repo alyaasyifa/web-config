@@ -42,7 +42,7 @@ public class VirtualAccountController {
         virtualAccountService.create(virtualaccount);
         String sccMsg = "Data saved successfully";
         modelAndView.addObject("sccMsg", sccMsg);
-        modelAndView.setViewName("virtualaccount/add-virtualaccount");
+        modelAndView.setViewName("redirect:/virtualaccount/list");
         return modelAndView;
     }
 

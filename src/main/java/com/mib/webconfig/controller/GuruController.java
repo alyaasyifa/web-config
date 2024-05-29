@@ -32,7 +32,7 @@ public class GuruController {
         guruService.create(guru);
         String sccMsg = "Data saved successfully";
         modelAndView.addObject("sccMsg", sccMsg);
-        modelAndView.setViewName("guru/add-guru");
+        modelAndView.setViewName("redirect:/guru/list");
         return modelAndView;
     }
 
